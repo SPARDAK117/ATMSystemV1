@@ -4,5 +4,5 @@ using MediatR;
 
 namespace API.ATM.Application.Commands
 {
-    public sealed record ChangePinCommand(ChangePinDTO Request) : IRequest<ApiResponse<Unit>>;
+    public sealed record ChangePinCommand(ChangePinDto Request) : IRequest<ApiResponse<Unit>>;
 }

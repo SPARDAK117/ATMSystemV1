@@ -4,11 +4,13 @@ using API.ATM.Application.DTOs;
 using API.ATM.Application.DTOs.Auth;
 using API.ATM.Shared;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.ATM.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ChangePinController : ControllerBase
@@ -28,7 +30,7 @@ namespace API.ATM.Controllers
 
             string cardNumber = User.FindFirst("cardNumber")?.Value ?? "";
 
-            ChangePinDTO Dto = new()
+            ChangePinDto Dto = new()
             {
                 CardNumber = cardNumber,
                 NewPin = request.NewPin,

@@ -26,7 +26,11 @@ namespace API.ATM
 
             Services.Configure<AtmLimitsOptions>(Configuration.GetSection("AtmLimits"));
 
-            Services.AddControllers();
+            Services.AddControllers(options => {})
+            .ConfigureApiBehaviorOptions(options => 
+            {
+                options.SuppressModelStateInvalidFilter = true;
+            });
 
             Services.AddEndpointsApiExplorer();
             Services.AddSwaggerGen();
