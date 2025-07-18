@@ -18,51 +18,6 @@ Herramientas de Prueba: Postman
 
 Control de Versiones: Git / GitHub
 
-🏗️ Estructura del Proyecto
-El proyecto está organizado en 4 capas lógicas, cada una con su propio proyecto físico en la solución de Visual Studio:
-
-ATM.WebAPI (Capa de Presentación):
-
-Proyecto ASP.NET Core Web API.
-
-Maneja las solicitudes HTTP, enrutamiento, serialización/deserialización.
-
-Contiene los controladores (AuthController, AccountController).
-
-Implementa la autenticación JWT y las validaciones de entrada (Data Annotations).
-
-Asegura que todas las respuestas del controlador sean controladas y devuelvan un código de estado HTTP 200 OK, con el resultado lógico (éxito/error) en el cuerpo de la respuesta.
-
-Configuración de Swagger para la documentación interactiva.
-
-ATM.Core (Capa de Lógica de Negocio/Servicios):
-
-Librería de clases que contiene la lógica de negocio central del ATM.
-
-Define interfaces de servicio (ej. IAccountService, IAuthService).
-
-Implementa las reglas de negocio (límites de retiro/depósito, verificación de saldo, lógica de cambio de PIN).
-
-Utiliza un SecurityService para el hashing y verificación de PINs.
-
-ATM.Data (Capa de Acceso a Datos):
-
-Librería de clases que interactúa directamente con la base de datos SQL Server.
-
-Implementa interfaces de repositorio (ej. IAccountRepository).
-
-Todas las operaciones de base de datos se realizan estrictamente a través de Stored Procedures utilizando ADO.NET.
-
-Manejo de conexiones y mapeo de datos.
-
-ATM.Shared (Capa de Modelos/Utilidades Compartidas):
-
-Librería de clases que contiene modelos de dominio (POCOs como Account, Card, Transaction).
-
-Define DTOs comunes para la comunicación entre capas (ej. ApiResponse<T>, ServiceResponse<T>).
-
-Contiene enumeraciones y constantes compartidas.
-
 📋 Requisitos Previos
 Antes de ejecutar el proyecto, asegúrate de tener instalado lo siguiente:
 
