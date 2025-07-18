@@ -6,7 +6,7 @@ Backend: ASP.NET Core 8 Web API (C#)
 
 Base de Datos: SQL Server
 
-Acceso a Datos: ADO.NET (Strictamente con Stored Procedures)
+Acceso a Datos: ADO.NET (Estrictamente con Stored Procedures)
 
 Autenticación: JSON Web Tokens (JWT)
 
