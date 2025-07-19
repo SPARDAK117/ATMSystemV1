@@ -82,6 +82,24 @@ Haz clic en el botón "HTML" (o el perfil de lanzamiento que uses) en la barra d
 
 Se abrirá una ventana del navegador con la interfaz de Swagger UI (normalmente en http://localhost:PUERTO/swagger/index.html).
 
+Se encontrara con este INSERT dentro del Script, este INSERT tiene la data del primer ejemplo para hacer login,consultar balance, hacer retiros y hacer depositos
+Debe usar su numero de tarjeta 1397017288273011 y su pin 1234 para acceder, debe tener cuidado al cambiar el PIN.
+
+INSERT INTO Bank.Customers (FullName, CreatedAt)
+VALUES (N'John Smith', SYSDATETIME());
+
+INSERT INTO Bank.Accounts (CustomerId, AccountNumber, Balance, CreatedAt)
+VALUES (2, 'ACC002', 6000, SYSDATETIME());
+
+INSERT INTO Bank.Cards (AccountId, CardNumber, PinSalt, PinHash, IsActive, CreatedAt)
+VALUES (
+    2,
+    '1397017288273011',
+    '6c8d6e0c-801a-4f99-bb6e-4777e084ba62',
+    0x680883f47bb528e4aca6beeea9d283b61891bd7606e65e953d313fac2ab92432d0727869f809e9bb01bd03b151aef000cbbe7f714cef3ec072df11d4ae97153a,
+    1,
+    SYSDATETIME()
+);
 
 
 ¡Esperamos que este README te sea de gran utilidad! Si tienes alguna pregunta o necesitas asistencia adicional, no dudes en consultarnos.
