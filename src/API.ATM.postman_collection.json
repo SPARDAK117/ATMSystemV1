@@ -85,8 +85,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
-								"packages": {},
 								"exec": [
 									"pm.test(\"Status code is 200 OK\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -109,7 +107,9 @@
 									"        console.log(\"PIN Change Error:\", responseData.message, \"Code:\", responseData.errorCode);",
 									"    });",
 									"}"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -127,7 +127,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cardNumber\": \"{{customerCardNumber}}\",\n  \"oldPin\": \"{{customerPin}}\",\n  \"newPin\": \"{{newCustomerPin}}\"\n}",
+							"raw": "{\n  \"oldPin\": \"{{customerPin}}\",\n  \"newPin\": \"{{newCustomerPin}}\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -135,14 +135,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Accounts/change-pin",
+							"raw": "{{baseUrl}}/api/ChangePin",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"Accounts",
-								"change-pin"
+								"ChangePin"
 							]
 						}
 					},
@@ -159,8 +158,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
-								"packages": {},
 								"exec": [
 									"pm.test(\"Status code is 200 OK\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -182,7 +179,9 @@
 									"        console.log(\"Withdrawal Error:\", responseData.message, \"Code:\", responseData.errorCode);",
 									"    });",
 									"}"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -200,7 +199,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cardNumber\": \"{{customerCardNumber}}\",\n  \"pin\": \"{{customerPin}}\",\n  \"amount\": 100.00\n}",
+							"raw": "{\n  \"amount\": 100.00\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -208,13 +207,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Accounts/withdraw",
+							"raw": "{{baseUrl}}/api/Transactions/withdraw",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"Accounts",
+								"Transactions",
 								"withdraw"
 							]
 						}
@@ -227,8 +226,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
-								"packages": {},
 								"exec": [
 									"pm.test(\"Status code is 200 OK\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -250,7 +247,9 @@
 									"        console.log(\"Deposit Error:\", responseData.message, \"Code:\", responseData.errorCode);",
 									"    });",
 									"}"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -268,7 +267,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"accountOrCard\": \"{{customerCardNumber}}\",\n  \"amount\": 500.00\n}",
+							"raw": "{\n  \"amount\": 500.00\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -276,13 +275,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Accounts/deposit",
+							"raw": "{{baseUrl}}/api/Transactions/deposit",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"Accounts",
+								"Transactions",
 								"deposit"
 							]
 						}
@@ -295,8 +294,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
-								"packages": {},
 								"exec": [
 									"pm.test(\"Status code is 200 OK\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -318,12 +315,17 @@
 									"        console.log(\"Balance Inquiry Error:\", responseData.message, \"Code:\", responseData.errorCode);",
 									"    });",
 									"}"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -336,7 +338,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"cardNumber\": \"{{customerCardNumber}}\",\n  \"pin\": \"{{customerPin}}\"\n}",
+							"raw": "",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -344,13 +346,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseUrl}}/api/Accounts/balance",
+							"raw": "{{baseUrl}}/api/Transactions/balance",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
-								"Accounts",
+								"Transactions",
 								"balance"
 							]
 						}
@@ -390,7 +392,9 @@
 			"script": {
 				"type": "text/javascript",
 				"packages": {},
-				"exec": []
+				"exec": [
+					""
+				]
 			}
 		}
 	],
@@ -407,7 +411,7 @@
 		},
 		{
 			"key": "customerCardNumber",
-			"value": "1397017288273001",
+			"value": "1397017288273011",
 			"type": "string"
 		},
 		{
@@ -417,7 +421,7 @@
 		},
 		{
 			"key": "newCustomerPin",
-			"value": "5678",
+			"value": "4321",
 			"type": "string"
 		},
 		{

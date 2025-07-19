@@ -11,10 +11,10 @@ namespace API.ATM.Domain.Helpers
     {
         public static (Guid Salt, byte[] Hash) HashPin(string pin)
         {
-            var salt = Guid.NewGuid();
-            using var sha256 = SHA256.Create();
-            var combined = Encoding.UTF8.GetBytes(pin + salt.ToString());
-            var hash = sha256.ComputeHash(combined);
+            Guid salt = Guid.NewGuid();
+            using SHA512 sha512 = SHA512.Create();
+            byte[] combined = Encoding.UTF8.GetBytes(pin + salt.ToString());
+            byte[] hash = sha512.ComputeHash(combined);
             return (salt, hash);
         }
     }

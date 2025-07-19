@@ -73,9 +73,9 @@ namespace API.ATM.Infrastructure
 
             if (!isActive) return false;
 
-            using SHA256 sha256 = SHA256.Create();
+            using SHA512 Sha512 = SHA512.Create();
             var combined = Encoding.UTF8.GetBytes(Pin + salt.ToString());
-            var inputHash = sha256.ComputeHash(combined);
+            var inputHash = Sha512.ComputeHash(combined);
 
             return dbHash.SequenceEqual(inputHash);
         }
